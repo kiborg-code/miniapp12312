@@ -46,12 +46,12 @@ async function loadExamples(){
   const list = document.getElementById("portfolioList");
   list.innerHTML = "";
   try{
-    const r = await fetch("http://127.0.0.1:8000/examples");
+    const r = await fetch("https://api-s0aa.onrender.com/examples");
     const arr = await r.json();
     arr.forEach(ex=>{
       const media = ex.gif_path.endsWith(".mp4")
-        ? `<video class="portfolio-gif" src="http://127.0.0.1:8000/static/${ex.gif_path}" autoplay loop muted playsinline></video>`
-        : `<img   class="portfolio-gif" src="http://127.0.0.1:8000/static/${ex.gif_path}" alt="gif">`;
+        ? `<video class="portfolio-gif" src="https://api-s0aa.onrender.com/static/${ex.gif_path}" autoplay loop muted playsinline></video>`
+        : `<img   class="portfolio-gif" src="https://api-s0aa.onrender.com/static/${ex.gif_path}" alt="gif">`;
       list.insertAdjacentHTML("beforeend",`
         <div class="portfolio-item">
           <div class="bot-info">
@@ -86,7 +86,7 @@ async function openLk(){
   portList.style.display = "none";
 
   try {
-    const r = await fetch(`http://127.0.0.1:8000/orders/${tg_id}`);
+    const r = await fetch(`https://api-s0aa.onrender.com/orders/${tg_id}`);
     const orders = await r.json();
 
     if (!orders.length) {
