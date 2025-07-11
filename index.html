@@ -23,13 +23,13 @@
 </div>
 
 <!-- ───────────── STORY MODAL ──────── -->
-<div id="storyModal" class="modal">
+<!-- <div id="storyModal" class="modal">
     <div class="modal-content">
         <div class="modal-title" id="modalTitle"></div>
         <div class="modal-text"  id="modalText"></div>
         <button class="modal-close">Закрыть</button>
     </div>
-</div>
+</div> -->
 
 <!-- ───────────── ОСНОВНОЙ КОНТЕЙНЕР ─ -->
 <div class="container">
@@ -52,7 +52,7 @@
             </div>
             <div class="story" data-index="3">
                 <div class="story-gif-container"><img src="Gifs/code.gif" class="story-gif" alt="Код"/></div>
-                <div class="story-text">Индивидуальный код</div>
+                <div class="story-text">Уникальный код</div>
             </div>
             <div class="story" data-index="4">
                 <div class="story-gif-container"><img src="Gifs/design.gif" class="story-gif" alt="Дизайн"/></div>
@@ -80,11 +80,23 @@
 </div>
 
 <!-- ─ НИЖНЯЯ НАВИГАЦИЯ ─ -->
+<!-- ─ НИЖНЯЯ НАВИГАЦИЯ ─ -->
 <nav class="bottom-nav">
-    <button id="navMain"      class="nav-btn active">Главное меню</button>
-    <button id="navPortfolio" class="nav-btn">Примеры работ</button>
-    <button id="navDummy"     class="nav-btn">Личный кабинет</button>
+  <button id="navMain" class="nav-btn active">
+    <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9h-2v9h-5v-6h-4v6H5v-9H3z"/></svg>
+    <span>Главное меню</span>
+  </button>
+  <button id="navPortfolio" class="nav-btn">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16v4H4V6zm0 6h16v8H4v-8z"/></svg>
+    <span>Примеры</span>
+  </button>
+  <button id="navDummy" class="nav-btn">
+    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67
+    0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    <span>Кабинет</span>
+  </button>
 </nav>
+
 
 <!-- Скрипт -->
 <script src="script.js"></script>

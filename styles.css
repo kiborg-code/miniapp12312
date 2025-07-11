@@ -93,7 +93,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #6e48aa, #9d50bb);
+    background: linear-gradient(90deg, #000000, #000000);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -129,9 +129,9 @@ body {
 }
 
 .story-text {
-    font-size: 12px;
+    font-size: 11px;
     color: #333;
-    font-weight: 500;
+    font-weight: 510;
     padding: 0 4px;
 }
 
@@ -383,6 +383,7 @@ body {
     padding: 12px 16px;
     display: flex;
     justify-content: space-between;
+    gap: 8px; /* Отступ между кнопками */
     background: #ffffff;
     border-top: 1px solid #e0e0e0;
     z-index: 1000;
@@ -390,22 +391,33 @@ body {
 
 .nav-btn {
     flex: 1;
-    margin: 0 5px;
-    border: 1.5px solid #000;
-    background-color: #fff;
-    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 0;
     padding: 10px 8px;
+    background-color: #ffffff;
+    border: 1.5px solid #000;
     border-radius: 10px;
+    color: #888; /* неактивный цвет */
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.nav-btn.active {
-    background-color: #000;
-    color: #fff;
+.nav-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* svg будет того же цвета, что и текст */
 }
+
+.nav-btn.active {
+    color: #000; /* активный цвет */
+}
+
 
 .portfolio-item {
   background: white;
@@ -475,4 +487,58 @@ body {
   object-fit: contain;
   border-radius: 10px;
   display: block;
+}
+
+
+
+.nav-btn {
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #888;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.nav-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #888;
+  margin-bottom: 3px;
+  transition: fill 0.2s;
+}
+
+.nav-btn.active svg {
+  fill: #000;
+}
+
+.nav-btn.active span {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Гифка чуть больше и с эффектом */
+.story-gif-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.story-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.story:hover .story-gif {
+  transform: scale(1.07);
 }

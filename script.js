@@ -5,9 +5,9 @@ tg.ready();
 
 /* Демо-stories (статический контент) */
 const storiesContent = [
-  { title: "Подключаем эквайринг",   description: "Быстрое подключение платёжных систем…" },
-  { title: "Расширенная статистика", description: "Детальная аналитика по всем аспектам…" },
-  { title: "Индивидуальный код",     description: "Разработка уникальных решений…" },
+  { title: "Подключаем эквайринг",   description: "Быстрое подключение платёжных систем" },
+  { title: "Расширенная статистика", description: "Детальная аналитика по всем аспектам" },
+  { title: "Индивидуальный код",     description: "Разработка уникальных решений" },
   { title: "Лучший дизайн",          description: "Современный UI/UX для максимальной конверсии" },
   { title: "Мы просто крутые",       description: "Профессиональный подход, креативные решения" }
 ];
@@ -31,15 +31,6 @@ function closeFullscreenStory(){
   document.getElementById("storyModal"  ).style.display = "none";
   currentStoryIndex = null;
 }
-
-/* Кнопки главного меню */
-function showOrderForm(){
-  document.getElementById("loader").style.display = "flex";
-  setTimeout(()=>{ document.getElementById("loader").style.display = "none";
-    alert("Форма заявки появится здесь 😉");
-  },800);
-}
-const openSupport = ()=> window.open("https://t.me/kodd_support","_blank");
 
 /* ───── Загрузка примеров ───── */
 async function loadExamples(){
@@ -170,8 +161,13 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
 
   // верхние кнопки
-  document.getElementById("orderBtn").addEventListener("click",showOrderForm);
-  document.getElementById("supportBtn").addEventListener("click",openSupport);
+  document.getElementById("orderBtn").addEventListener("click", () => {
+    Telegram.WebApp.openTelegramLink("https://t.me/allokislova");
+  });
+
+  document.getElementById("supportBtn").addEventListener("click", () => {
+    Telegram.WebApp.openTelegramLink("https://t.me/allokislova");
+  });
 
   /* preload icons */
   ["money","stats","code","design","cool"].forEach(x=>new Image().src=`Gifs/${x}.gif`);
@@ -192,3 +188,33 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   },{passive:true});
 })();
+
+// ─── Открытие гифки в фулл-экране ─────────────────────
+document.querySelectorAll('.story').forEach(story => {
+  story.addEventListener('click', () => {
+    const gif = story.querySelector('.story-gif');
+    const index = parseInt(story.dataset.index) - 1;
+    const content = storiesContent[index];
+
+    const fullscreen = document.getElementById('fullscreenGif');
+    const fullscreenImg = document.getElementById('fullscreenGifImage');
+    const fullscreenCap = document.getElementById('fullscreenGifCaption');
+
+    fullscreenImg.src = gif.src;
+    fullscreenCap.textContent = content.description;
+    fullscreen.style.display = 'flex';
+  });
+});
+
+// Закрытие фулл-экрана
+document.querySelector('.close-fullscreen').addEventListener('click', () => {
+  document.getElementById('fullscreenGif').style.display = 'none';
+});
+
+// ─── Навигация: переключение кнопок ─────────────────
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
